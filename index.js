@@ -22,20 +22,49 @@ async function main() {
   await mongoosh.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
 
-app.get("/", async (req, res) => {
-  let sampleListing = new Listing({
-    title: "Shimanto",
-    description: "I am from bangladesh",
-    price: 2000,
-    location: "Dhaka",
-    country: "Bangladesh",
-  });
+// =========== index route
+app.get("/listing", async (req, res) => {
+  let allLIsting = await Listing.find({});
+  res.render("index.ejs", { allLIsting });
+});
 
-  await sampleListing
-    .save()
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
-  res.send("Test successfull!");
+// ========== new route
+app.get("/listing/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+// ============ create new listing
+app.post("/listing", async (req, res) => {
+  let newListing = new Listing(req.body.listing);
+  await newListing.save();
+  res.redirect("/listing");
+});
+
+// =========== show route
+app.get("/listing/:id", async (req, res) => {
+  let { id } = req.params;
+  let listing = await Listing.findById(id);
+  res.render("show.ejs", { listing });
+});
+
+// ======== update route
+app.get("/listing/:id/edit", async (req, res) => {
+  let { id } = req.params;
+  let listing = await Listing.findById(id);
+  res.render("edit.ejs", { listing });
+});
+
+app.put("/listing/:id", async (req, res) => {
+  let { id } = req.params;
+  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  res.redirect(`/listing/${id}`);
+});
+
+// ======= delete route
+app.delete("/listing/:id", async (req, res) => {
+  let { id } = req.params;
+  await Listing.findByIdAndDelete(id);
+  res.redirect("/listing");
 });
 
 app.listen(3000, () => {

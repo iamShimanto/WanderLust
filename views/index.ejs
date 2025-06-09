@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WanderLust</title>
   </head>
   <body>
-    <h1>This is homePage</h1>
+    <h1>WanderLust</h1>
+    <form action="/listing/new" method="get">
+      <button>Add new Listing</button>
+    </form>
+    <ul>
+      <% for(let listing of allLIsting){ %>
+      <li><a href="/listing/<%= listing._id %>"><%= listing.title %></a></li>
+      <% } %>
+    </ul>
   </body>
 </html>
