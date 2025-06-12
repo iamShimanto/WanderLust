@@ -1,0 +1,40 @@
+.navbar{
+    padding: 20px 0;
+    background: rgb(255, 255, 255);
+}
+
+.fa-compass{
+    color: #ff0000bf;
+    font-size: 32px;
+}
+.navbar li a{
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+}
+
+.f-info{
+    background-color: #ebebeb;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.f-info-brand{
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+}
+.f-info-socials{
+    font-size: 24px;
+    color: black;
+}
+.f-info-private a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+.f-info-private a:hover{
+    text-decoration: underline;
+}
