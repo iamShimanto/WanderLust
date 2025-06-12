@@ -1,10 +1,27 @@
 <% layout("/layout/boilerplate") %>
-  <body>
-    <h1>WanderLust</h1>
-    <ul>
-      <% for(let listing of allLIsting){ %>
-      <li><a href="/listing/<%= listing._id %>"><%= listing.title %></a></li>
-      <% } %>
-    </ul>
-  </body>
+<body>
+  <h1>All Listing</h1>
 
+  <div class="row row-cols-lg-3 row-cols-sm-2" style="margin: 0 10px;">
+    <% for(let listing of allLIsting){ %>
+    <a href="/listing/<%= listing._id %>">
+      <div class="card" style="margin-bottom: 20px; border: none;">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="listing-image"
+          style="height: 18rem;"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b><br>
+            &#2547 <%= listing.price.toLocaleString("en-BD") %>/night
+          </p>
+        </div>
+      </div>
+    </a>
+
+    <% } %>
+  </div>
+</body>

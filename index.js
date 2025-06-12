@@ -24,6 +24,10 @@ async function main() {
   await mongoosh.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
 
+app.get("/", (req, res) => {
+  res.send("This is root page");
+});
+
 // =========== index route
 app.get("/listing", async (req, res) => {
   let allLIsting = await Listing.find({});
@@ -72,4 +76,3 @@ app.delete("/listing/:id", async (req, res) => {
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
-

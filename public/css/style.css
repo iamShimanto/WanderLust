@@ -1,3 +1,15 @@
+a{
+    text-decoration: none;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+
 .navbar{
     padding: 20px 0;
     background: rgb(255, 255, 255);
@@ -37,4 +49,18 @@
 }
 .f-info-private a:hover{
     text-decoration: underline;
+}
+.card{
+    cursor: pointer;
+}
+.card-body{
+    padding: 0;
+    border: none;
+}
+.card-body p{
+    font-size: 18px;
+    font-weight: 600;
+}
+.card-img-overlay:hover{
+    background-color: rgba(255, 255, 255, 0.20);
 }
