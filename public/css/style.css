@@ -1,71 +1,73 @@
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
-body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #0B1D51;
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #0b1d51;
 }
-.container{
-    flex: 1;
+.container {
+  flex: 1;
 }
-h1,h2{
-    color: white;
-    padding: 10px 0;
-}
-
-.navbar{
-    padding: 20px 0;
-    background: rgba(255, 255, 255, 0.9);
+h1,
+h2 {
+  color: white;
+  padding: 10px 0;
 }
 
-.fa-compass{
-    color: #ff0000bf;
-    font-size: 32px;
-}
-.navbar li a{
-    font-size: 20px;
-    color: black;
-    font-weight: 600;
+.navbar {
+  padding: 20px 0;
+  background: #bbfbff;
 }
 
-.f-info{
-    background-color: #ebebeb;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.fa-compass {
+  color: #ff0000bf;
+  font-size: 32px;
 }
-.f-info-brand{
-    font-size: 24px;
-    font-weight: 700;
-    color: black;
+.navbar li a {
+  font-size: 20px;
+  color: black;
+  font-weight: 600;
 }
-.f-info-socials{
-    font-size: 24px;
-    color: black;
+
+.f-info {
+  background-color: #7ac6d2;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-.f-info-private a{
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
+.f-info-brand {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
 }
-.f-info-private a:hover{
-    text-decoration: underline;
+.f-info-socials {
+  font-size: 24px;
+  color: black;
 }
-.card{
-    cursor: pointer;
+.f-info-private a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
-.card-body{
-    padding: 10px;
-    border: none;
+.f-info-private a:hover {
+  text-decoration: underline;
 }
-.card-body p{
-    font-size: 18px;
-    font-weight: 600;
+.card {
+  cursor: pointer;
 }
-.card-img-overlay:hover{
-    background-color: rgba(255, 255, 255, 0.20);
+.card-body {
+  padding: 10px;
+  border: none;
+  background-color: #fec5f6;
+}
+.card-body p {
+  font-size: 18px;
+  font-weight: 600;
+}
+.card-img-overlay:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
