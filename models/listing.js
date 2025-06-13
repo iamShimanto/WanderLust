@@ -17,10 +17,10 @@ const listingSchema = new Schema({
     url: {
       type: String,
       default:
-        "https://unsplash.com/photos/a-pathway-leading-to-a-field-of-flowers-Hj2J0pG5ktg",
+        "https://images.pexels.com/photos/30767897/pexels-photo-30767897/free-photo-of-modern-rustic-bedroom-with-brick-and-wood-elements.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       set: (v) =>
         v === ""
-          ? "https://unsplash.com/photos/a-pathway-leading-to-a-field-of-flowers-Hj2J0pG5ktg"
+          ? "https://images.pexels.com/photos/30767897/pexels-photo-30767897/free-photo-of-modern-rustic-bedroom-with-brick-and-wood-elements.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
           : v,
     },
   },
