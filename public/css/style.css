@@ -5,14 +5,19 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #0B1D51;
 }
 .container{
     flex: 1;
 }
+h1,h2{
+    color: white;
+    padding: 10px 0;
+}
 
 .navbar{
     padding: 20px 0;
-    background: rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .fa-compass{
@@ -54,7 +59,7 @@ body{
     cursor: pointer;
 }
 .card-body{
-    padding: 0;
+    padding: 10px;
     border: none;
 }
 .card-body p{
