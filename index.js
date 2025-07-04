@@ -21,7 +21,9 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoosh.connect("mongodb://127.0.0.1:27017/wanderlust");
+  await mongoosh.connect(
+    "mongodb+srv://shimanto925pabna:WK4t6ezKJV5vZwMt@cluster0.soq7ojv.mongodb.net/"
+  );
 }
 
 app.get("/", (req, res) => {
