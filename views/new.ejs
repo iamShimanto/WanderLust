@@ -1,11 +1,11 @@
 <% layout("/layout/boilerplate") %>
 <body>
-    <br>
+  <br />
   <h2 style="text-align: center">Create a New Listing</h2>
 
   <div class="row">
     <div class="col-lg-8 mx-auto">
-      <form action="/listing" method="post">
+      <form action="/listing" method="post" class="needs-validation" novalidate>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input
@@ -13,7 +13,9 @@
             placeholder="Enter title"
             name="listing[title]"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Title should be valid</div>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
@@ -22,7 +24,9 @@
             placeholder="Enter description"
             name="listing[description]"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Description should be valid</div>
         </div>
         <div class="mb-3">
           <label for="image.url" class="form-label">Image Link</label>
@@ -41,7 +45,9 @@
               placeholder="1200"
               name="listing[price]"
               class="form-control"
+              required
             />
+            <div class="invalid-feedback">Price should be valid</div>
           </div>
           <div class="mb-3 col-md-8">
             <label for="country" class="form-label">Country</label>
@@ -50,7 +56,9 @@
               placeholder="Bangladesh"
               name="listing[country]"
               class="form-control"
+              required
             />
+            <div class="invalid-feedback">Country Name should be valid</div>
           </div>
         </div>
         <div class="mb-3">
@@ -60,7 +68,9 @@
             placeholder="Dhaka"
             name="listing[location]"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Location should be valid</div>
         </div>
         <button class="mb-3 btn btn-dark">add</button>
       </form>

@@ -5,6 +5,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const Listing = require("./models/listing.js");
 const ejsMate = require("ejs-mate");
+const expressError = require("./utils/expressError.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -42,10 +43,14 @@ app.get("/listing/new", (req, res) => {
 });
 
 // ============ create new listing
-app.post("/listing", async (req, res) => {
-  let newListing = new Listing(req.body.listing);
-  await newListing.save();
-  res.redirect("/listing");
+app.post("/listing", async (req, res, next) => {
+  try {
+    let newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listing");
+  } catch (err) {
+    next(new expressError(400, "something went wrong"));
+  }
 });
 
 // =========== show route
@@ -73,6 +78,16 @@ app.delete("/listing/:id", async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndDelete(id);
   res.redirect("/listing");
+});
+
+
+app.use((req, res, next) => {
+  next(new expressError(404, "Page not found"));
+});
+
+app.use((err, req, res, next) => {
+  let { statusCode, message } = err;
+  res.status(statusCode).send(message);
 });
 
 app.listen(3000, () => {
