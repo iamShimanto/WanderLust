@@ -50,6 +50,23 @@ app.get("/listing/new", (req, res) => {
 app.post("/listing", async (req, res, next) => {
   try {
     let newListing = new Listing(req.body.listing);
+
+    if (!newListing.title) {
+      throw new expressError(400, "Title is missing");
+    }
+    if (!newListing.description) {
+      throw new expressError(400, "Description is missing");
+    }
+    if (!newListing.price) {
+      throw new expressError(400, "Price is missing");
+    }
+    if (!newListing.country) {
+      throw new expressError(400, "Country is missing");
+    }
+    if (!newListing.location) {
+      throw new expressError(400, "Location is missing");
+    }
+
     await newListing.save();
     res.redirect("/listing");
   } catch (err) {
@@ -96,7 +113,7 @@ app.delete("/listing/:id", async (req, res, next) => {
     await Listing.findByIdAndDelete(id);
     res.redirect("/listing");
   } catch (error) {
-    next(new expressError())
+    next(new expressError());
   }
 });
 
@@ -105,8 +122,8 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something Went Wrong!" } = err;
-  res.status(statusCode).send(message);
+  let { statusCode = 500, message } = err;
+  res.status(statusCode).render("error", { message });
 });
 
 app.listen(3000, () => {

@@ -1,7 +1,7 @@
 <% layout("/layout/boilerplate") %>
 <body>
   <h2 style="text-align: center; margin: 10px 0;">Edit Listing</h2>
-  <form method="post" action="/listing/<%= listing._id %>?_method=PUT">
+  <form method="post" action="/listing/<%= listing._id %>?_method=PUT" class="needs-validation" novalidate>
     <div class="row">
       <div class="col-lg-8 mx-auto">
     <div class="mb-3">
@@ -11,7 +11,9 @@
         value="<%= listing.title %>"
         name="listing[title]"
         class="form-control"
+        required
       />
+      <div class="invalid-feedback">Title should be valid</div>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
@@ -20,7 +22,9 @@
         value="<%= listing.description %>"
         name="listing[description]"
         class="form-control"
+        required
       />
+      <div class="invalid-feedback">Description should be valid</div>
     </div>
     <div class="mb-3">
       <label for="image.url" class="form-label">Image Link</label>
@@ -35,11 +39,13 @@
     <div class="mb-3 col-md-4">
       <label for="price" class="form-label">Price</label>
       <input
-        type="text"
+        type="number"
         value="<%= listing.price %>"
         name="listing[price]"
         class="form-control"
+        required
       />
+      <div class="invalid-feedback">Price should be valid</div>
     </div>
     <div class="mb-3 col-md-8">
       <label for="country" class="form-label">Country</label>
@@ -48,7 +54,9 @@
         value="<%= listing.country %>"
         name="listing[country]"
         class="form-control"
+        required
       />
+      <div class="invalid-feedback">Country Name should be valid</div>
     </div>
   </div>
     <div class="mb-3">
@@ -58,7 +66,9 @@
         value="<%= listing.location %>"
         name="listing[location]"
         class="form-control"
+        required
       />
+      <div class="invalid-feedback">Location should be valid</div>
     </div>
     <button class="mb-3 btn btn-dark">edit</button>
   </form>
