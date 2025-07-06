@@ -32,9 +32,13 @@ app.get("/", (req, res) => {
 });
 
 // =========== index route
-app.get("/listing", async (req, res) => {
-  let allLIsting = await Listing.find({});
-  res.render("index.ejs", { allLIsting });
+app.get("/listing", async (req, res, next) => {
+  try {
+    let allLIsting = await Listing.find({});
+    res.render("index.ejs", { allLIsting });
+  } catch (error) {
+    next(error);
+  }
 });
 
 // ========== new route
@@ -54,39 +58,54 @@ app.post("/listing", async (req, res, next) => {
 });
 
 // =========== show route
-app.get("/listing/:id", async (req, res) => {
-  let { id } = req.params;
-  let listing = await Listing.findById(id);
-  res.render("show.ejs", { listing });
+app.get("/listing/:id", async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    let listing = await Listing.findById(id);
+    res.render("show.ejs", { listing });
+  } catch (error) {
+    next(new expressError());
+  }
 });
 
 // ======== update route
-app.get("/listing/:id/edit", async (req, res) => {
-  let { id } = req.params;
-  let listing = await Listing.findById(id);
-  res.render("edit.ejs", { listing });
+app.get("/listing/:id/edit", async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    let listing = await Listing.findById(id);
+    res.render("edit.ejs", { listing });
+  } catch (error) {
+    next(new expressError(400, "something went wrong!"));
+  }
 });
 
-app.put("/listing/:id", async (req, res) => {
-  let { id } = req.params;
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-  res.redirect(`/listing/${id}`);
+app.put("/listing/:id", async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    res.redirect(`/listing/${id}`);
+  } catch (error) {
+    next(new expressError());
+  }
 });
 
 // ======= delete route
-app.delete("/listing/:id", async (req, res) => {
-  let { id } = req.params;
-  await Listing.findByIdAndDelete(id);
-  res.redirect("/listing");
+app.delete("/listing/:id", async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    await Listing.findByIdAndDelete(id);
+    res.redirect("/listing");
+  } catch (error) {
+    next(new expressError())
+  }
 });
-
 
 app.use((req, res, next) => {
   next(new expressError(404, "Page not found"));
 });
 
 app.use((err, req, res, next) => {
-  let { statusCode, message } = err;
+  let { statusCode = 500, message = "Something Went Wrong!" } = err;
   res.status(statusCode).send(message);
 });
 
